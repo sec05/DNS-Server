@@ -9,7 +9,7 @@ import (
 //This file needs to init the server, cache, and resolver
 func Run(){
 	dns.HandleFunc("resolver", resolver.HandleRequest)
-	port := 53
+	port := 533
 	server := &dns.Server{Addr: ":"+strconv.Itoa(port), Net: "udp"}
 	log.Printf("Starting DNS server on port %d!",port)
 	err := server.ListenAndServe()
