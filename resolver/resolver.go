@@ -2,16 +2,19 @@ package resolver
 
 import (
 	//"log"
+
 	"github.com/miekg/dns"
 )
 type Handler struct{}
 
-func (this *Handler) ServeDNS(writer dns.ResponseWriter, request *dns.Msg){
+func (handler *Handler) ServeDNS(writer dns.ResponseWriter, request *dns.Msg){
 	message := new(dns.Msg)
-	message.SetReply(request)
+	//message.SetReply(request)
+	message.SetQuestion(request.Question[0].Name, 1)
 	message.Compress = false //can check for truncation
 	switch request.Opcode{
 	case dns.OpcodeQuery:
+	//	log.Println(message)
 		m := Parser(message)
 		message.Answer = append(message.Answer, m)
 	}
