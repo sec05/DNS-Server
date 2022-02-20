@@ -11,7 +11,6 @@ func Parser(message *dns.Msg) *dns.A {
 	for _, msg := range message.Question {
 		switch msg.Qclass {
 		case dns.TypeA:
-			
 			ip = Query(message)
 		}
 	}
