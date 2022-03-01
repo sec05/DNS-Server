@@ -17,6 +17,7 @@ func (handler *Handler) ServeDNS(writer dns.ResponseWriter, request *dns.Msg){
 		m := Parser(message)
 		message.Answer = append(message.Answer, m)
 	}
-
+	message.SetReply(request)
 	writer.WriteMsg(message)
+	writer.Close()
 }
