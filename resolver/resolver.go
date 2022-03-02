@@ -9,7 +9,6 @@ type Handler struct{}
 
 func (handler *Handler) ServeDNS(writer dns.ResponseWriter, request *dns.Msg){
 	message := new(dns.Msg)
-	//message.SetReply(request)
 	message.SetQuestion(request.Question[0].Name, 1)
 	message.Compress = false //can check for truncation
 	switch request.Opcode{
@@ -20,4 +19,5 @@ func (handler *Handler) ServeDNS(writer dns.ResponseWriter, request *dns.Msg){
 	message.SetReply(request)
 	writer.WriteMsg(message)
 	writer.Close()
+
 }
