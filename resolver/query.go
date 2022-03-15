@@ -1,14 +1,13 @@
 package resolver
 
 import (
-	"log"
+	//"log"
 	
 	"github.com/miekg/dns"
 )
 func Query(domain *dns.Msg) string{
 	r, err := dns.Exchange(domain, "4.2.2.1:53")
 	if err == nil && len(r.Answer) != 0{
-		log.Println(domain.Question[0].Name,"ip is:",r.Answer[0].(*dns.A).A.String())
 		return r.Answer[0].(*dns.A).A.String()
 	}
 	return "127.0.0.1"
