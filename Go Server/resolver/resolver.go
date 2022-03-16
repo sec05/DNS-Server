@@ -1,7 +1,7 @@
 package resolver
 
 import (
-	"log"
+	//"log"
 	"main/cache"
 	"net"
 	"github.com/miekg/dns"

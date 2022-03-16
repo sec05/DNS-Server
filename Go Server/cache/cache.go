@@ -1,7 +1,7 @@
 package cache
 
 import (
-	"log"
+	//"log"
 	"reflect"
 	"sync"
 	"time"
