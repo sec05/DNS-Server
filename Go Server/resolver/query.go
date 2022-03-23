@@ -1,14 +1,13 @@
 package resolver
 
 import (
-//	"log"
+	//"log"
 	"reflect"
 	"github.com/miekg/dns"
 )
 func Query(domain *dns.Msg) string{
 	r, err := dns.Exchange(domain, "4.2.2.1:53")
 	if err == nil && len(r.Answer) != 0{
-		//ip := ""
 		tmpR := r
 		for reflect.TypeOf(tmpR.Answer[0]).String() =="*dns.CNAME"{
 			domain := new(dns.Msg)

@@ -72,6 +72,7 @@ func (cache *Cache) GetItem(name string) *dns.Msg{
 	return cache.items[name].msg
 }
 
+//Need to redo this so its not O(n)
 func (cache *Cache) LeastRecentlyUsed() string {
 	var LRU string
 	var tmpTime time.Time
@@ -88,6 +89,7 @@ func (cache *Cache) LeastRecentlyUsed() string {
 	}
 	return LRU
 }
+
 func (cache *Cache) FirstInFirstOut() string {
 	if len(cache.items) > 0{
 		return reflect.ValueOf(cache.items).MapKeys()[0].String()
@@ -95,4 +97,12 @@ func (cache *Cache) FirstInFirstOut() string {
 		return ""
 	}
 	
+}
+
+func (cache *Cache) LastInFirstOut() string {
+	if len(cache.items) > 0{
+		return reflect.ValueOf(cache.items).MapKeys()[len(cache.items)-1].String()
+	} else {
+		return ""
+	}
 }
