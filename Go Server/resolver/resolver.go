@@ -7,7 +7,7 @@ import (
 	"github.com/miekg/dns"
 )
 type Handler struct{}
-var c *cache.Cache = cache.New(128)
+var c *cache.Cache = cache.New(0)
 
 func (handler *Handler) ServeDNS(writer dns.ResponseWriter, request *dns.Msg){
 	message := new(dns.Msg)

@@ -5,7 +5,6 @@ import (
 	"reflect"
 	"sync"
 	"time"
-
 	"github.com/google/go-cmp/cmp"
 	"github.com/miekg/dns"
 )
@@ -37,8 +36,8 @@ func (cache *Cache) Remove(name string){
 }
 
 func (cache *Cache) Add( name string, m *dns.Msg){	
-	if cache.size <= 0 || len(cache.items) + 1 > cache.size{
-		cache.Remove(cache.LeastRecentlyUsed())
+	if cache.size <= 0 || len(cache.items) > cache.size{
+		cache.Remove(cache.LastInFirstOut())
 	}
 	
 	if _, exists := cache.items[name]; !exists{
