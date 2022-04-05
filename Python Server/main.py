@@ -8,10 +8,10 @@ class Server:
         self.s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
         self.s.bind((ip,self.port))
     
-    def setHandler(self, h):
+    def setHandler(self, h) -> None:
         self.handler = h
     
-    def run(self):
+    def run(self) -> None:
         print("Starting DNS server on port "+str(self.port)+"!")
         while True:
             data, addr = self.s.recvfrom(512)
