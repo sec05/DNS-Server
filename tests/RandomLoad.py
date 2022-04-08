@@ -15,10 +15,10 @@ with open(r'tests/domains.csv', 'r') as file:
             break
 domains.pop(0)
 start = time.time_ns()
-for i in range(1000):
+for i in range(5000):
     index = int(random() * len(domains))
     answer = resolver.resolve(domains[index])
-    for rr in answer:
-        print(domains[index] +": "+str(rr))
+    #for rr in answer:
+       # print(domains[index] +": "+str(rr))
 end = time.time_ns()
 print("Took "+str((end-start)/(10 ** 9))+" seconds to query random domains!")

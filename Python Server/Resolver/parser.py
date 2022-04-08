@@ -1,10 +1,13 @@
 import dns.message
-import dns.rdtypes
+import dns.rdtypes.IN.A
 from Resolver.query import Query 
 
 def Parser(data: dns.message.Message) -> dns.message.Message:
-    ip = dns.message.Message
+    ip = ""
+
     for q in data.question:
-        ip = Query(q.name, q.rdtype)
+        print(q.rdtype)
+        if q.rdtype == dns.rdtypes.IN.A:
+            ip = Query(q.name)
 
     return ip
