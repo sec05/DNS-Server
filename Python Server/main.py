@@ -16,7 +16,7 @@ class Server:
         while True:
             data, addr = self.s.recvfrom(512)
             message = dns.message.from_wire(data)
-            self.handler(message)
+            self.handler(message, addr)
 
 def main():
     s = Server(53,"127.0.0.1")
