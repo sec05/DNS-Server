@@ -6,6 +6,7 @@ class Server:
         self.port = p
         ip = n
         self.s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+        self.s.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
         self.s.bind((ip,self.port))
     
     def setHandler(self, h) -> None:
@@ -19,7 +20,7 @@ class Server:
             self.handler(message, addr)
 
 def main():
-    s = Server(53,"127.0.0.1")
+    s = Server(53,"")
     s.setHandler(ServeDNS)
     s.run()
 

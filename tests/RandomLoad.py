@@ -15,7 +15,7 @@ with open(r'tests/domains.csv', 'r') as file:
             break
 domains.pop(0)
 start = time.time_ns()
-for i in range(5000):
+for i in range(100):
     index = int(random() * len(domains))
     answer = resolver.resolve(domains[index])
     #for rr in answer:
