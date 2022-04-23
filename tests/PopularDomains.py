@@ -15,7 +15,7 @@ for i in range(len(domains)):
     index = int(random() * len(domains))
     answer = resolver.resolve(domains[index])
     for rr in answer:
-        print(domains[index] +": "+str(rr))
+        print(answer,domains[index] +": "+str(rr))
     domains.pop(index)
 end = time.time_ns()
 print("Took "+str((end-start)/(10 ** 9))+" seconds to query the top 499 domains!")
