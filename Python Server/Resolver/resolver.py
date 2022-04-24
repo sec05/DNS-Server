@@ -4,7 +4,7 @@ import dns.rrset
 import socket
 from Resolver.parser import Parser
 from Cache.Cache import Cache
-c = Cache(0)
+c = Cache(128)
 def ServeDNS(data: dns.message.Message, addr):
     
     message = dns.message.Message()

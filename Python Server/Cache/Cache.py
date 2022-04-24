@@ -37,7 +37,7 @@ class Cache:
                 return True
         if type(any) == dns.message.Message:
             for item in self.items:
-                if self.items[item] == any:
+                if len(self.items[item].msg.question) > 0 and self.items[item].msg.question[0].name == any.question[0].name:
                     return True
         return False
 

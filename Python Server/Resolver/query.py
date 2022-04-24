@@ -7,9 +7,9 @@ def Query(domain: str) -> dns.message.Message:
     r = dns.query.udp(q, "4.2.2.1")
     
     while len(r.answer) == 0:
-        print("looping")
         i = 0
         field = r.additional if len(r.additional) != 0 else r.authority
+        print(len(field))
         for d in field:
             if d.rdtype == dns.rdatatype.A:
                 break
