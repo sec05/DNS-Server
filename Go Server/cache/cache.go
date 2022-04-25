@@ -37,7 +37,7 @@ func (cache *Cache) Remove(name string){
 
 func (cache *Cache) Add( name string, m *dns.Msg){	
 	if cache.size <= 0 || len(cache.items) > cache.size{
-		cache.Remove(cache.LeastRecentlyUsed())
+		cache.Remove(cache.FirstInFirstOut())
 	}
 	
 	if _, exists := cache.items[name]; !exists{

@@ -15,7 +15,6 @@ func Query(domain *dns.Msg) string{
 			domain.SetQuestion(tmpR.Answer[0].(*dns.CNAME).Target,1)
 		
 			r, err := dns.Exchange(domain, "4.2.2.1:53")
-			log.Println("post dns exchange")
 			if err != nil{
 				log.Println(err.Error(), domain.Question)
 				return ""
