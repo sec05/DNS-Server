@@ -24,7 +24,7 @@ class Cache:
 
     def add(self, name, msg):
         if self.size < 0 or len(self.items) > self.size:
-            self.remove(self.FirstInFirstOut())
+            self.remove(self.LastInFirstOut())
         
         if name not in self.items:
             self.mutex.acquire()

@@ -19,7 +19,7 @@ j = 0
 c = 0
 for j in range(5):
     start = time.time_ns()
-    for i in range(50):
+    for i in range(5000):
         c += 1
         index = int(random() * len(domains)) 
         print(c, domains[index])
